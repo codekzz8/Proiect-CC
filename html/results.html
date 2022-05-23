@@ -1,0 +1,52 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="/public/form-page.css">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+</head>
+<body style="background-image: url(/public/background.jpg);">
+    <h3>Results:</h3>
+    <div class="container">
+        <p>
+            <b>The original text is:</b>
+            <br>
+            <%= original_text %>
+            <br>
+            <br>
+            The input text is written in <b><%= input_text_language %></b>.
+            <br>
+            <br>
+            The translation target language is <b><%= translate_target_language %></b>.
+            <br>
+            <br>
+            <b>The translated text is:</b>
+            <br>
+            <%= translated_text %>
+            <br>
+            <br>
+            <b>The text can be split into the following sentences with the corresponding magnitudes and scores:</b>
+            <ul>
+                <% sentences_array.forEach(function(sentence) { %>
+                    <li><%= sentence.text.content %></li>
+                    <ul>
+                        <li><b>Magnitude:</b> <%= sentence.sentiment.magnitude %></li>
+                        <li><b>Score:</b> <%= sentence.sentiment.score %></li>
+                    </ul>
+                <%}) %>
+            </ul>
+            <p>
+                <b>What does the score of the text mean?</b>
+                <br>
+                The <b>score</b> ranges from <em>-1.0</em> (negative) and <em>1.0</em> (positive) and corresponds to the overall emotional leaning of the text.
+            </p>
+            <p>
+                <b>What does the magnitude of the text mean?</b>
+                <br>
+                The <b>magnitude</b> indicates the overall strength of emotion (both positive and negative) within the given text, between <em>0.0</em> and <em>+inf</em>. 
+                Unlike score, magnitude is not normalized; 
+                each expression of emotion within the text (both positive and negative) contributes to the text's magnitude (so longer text blocks may have greater magnitudes.
+            </p>
+        </p>
+        <input type="submit" value="Back to analyze page" onclick="location.href='/analyze'">
+    </div>
+</body>
+</html>

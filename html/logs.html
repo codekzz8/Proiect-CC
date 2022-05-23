@@ -1,0 +1,25 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="/public/form-page.css">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+</head>
+<body style="background-image: url(/public/background.jpg);">
+    <h3>Logs:</h3>
+    <div class="container">
+        <p>
+            <ul>
+                <% logs_array.forEach(function(log) { %>
+                    <li><%= log.user %></li>
+                    <ul>
+                        <li><b>Original text:</b> <%= log.originalText %></li>
+                        <li><b>Translated text:</b> <%= log.translatedText %></li>
+                        <li><b>Text magnitude:</b> <%= log.magnitude %></li>
+                        <li><b>Text score:</b> <%= log.score %></li>
+                    </ul>
+                <%}) %>
+            </ul>
+        </p>
+        <input type="submit" value="Back to home page" onclick="location.href='/home'">
+    </div>
+</body>
+</html>

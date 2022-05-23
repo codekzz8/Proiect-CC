@@ -1,0 +1,24 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="/public/home.css">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+</head>
+<body style="background-image: url(/public/background.jpg);">
+    <div class="container">
+        <p>
+            Welcome to our text analyzer and translator, <%= google_name %>!
+            <br>
+            <br>
+            <br>
+            To get started, click on the button below!
+        </p>
+        <input type="submit" value="Go to analyze page" onclick="location.href='/analyze'">
+        <br>
+        <br>
+        <input type="submit" value="Logout" onclick="location.href='/logout'">
+    </div>
+    <% if (admin) { %>
+        <input id="logsButton" type="submit" value="Go to logs" onclick="location.href='/logs'">
+    <% } %>
+</body>
+</html>
